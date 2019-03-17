@@ -1,5 +1,6 @@
 import * as constants from '../constants/constants';
 import {Dispatch} from "redux";
+import {CoinApi} from "../types/types";
 
 const apiString = '&api_key=f0c3a82f98f5d0c98d84f5ac3e8660bb36e503c8dfca28a74d458871c2db1d24';
 
@@ -8,7 +9,7 @@ export type ApiAction = ReceiveCoinList | ReceiveMinuteData;
 
 export interface ReceiveCoinList {
     type: constants.RECEIVE_COIN_LIST;
-    json: object;
+    json: CoinApi;
 }
 
 export interface ReceiveMinuteData {
@@ -31,7 +32,7 @@ export function fetchMinuteData(coin: string) {
     }
 }
 
-export function receiveCoinList(json: Object): ReceiveCoinList {
+export function receiveCoinList(json: CoinApi): ReceiveCoinList {
     return {
         type: constants.RECEIVE_COIN_LIST,
         json

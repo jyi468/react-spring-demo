@@ -9,12 +9,14 @@ import { createStore, applyMiddleware, Action } from 'redux';
 import * as serviceWorker from './serviceWorker';
 import {default as thunk, ThunkMiddleware} from 'redux-thunk';
 import {createLogger} from 'redux-logger';
+import {fetchCoinList} from "./actions/actions";
+import {AppStateImpl} from './classes/AppState';
 
 const loggerMiddleware = createLogger();
 
 const store = createStore(
     app as any,
-    {},
+    new AppStateImpl(),
     applyMiddleware(thunk as ThunkMiddleware<AppState, Action>, loggerMiddleware)
 );
 
@@ -30,3 +32,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+store.dispatch(fetchCoinList());

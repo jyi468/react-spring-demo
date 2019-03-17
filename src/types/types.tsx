@@ -1,5 +1,5 @@
 export interface AppState {
-    coin: string;
+    currentCoinId: string;
     currency: string;
     coins: CoinData[];
     minuteData: MarketData[];
@@ -14,6 +14,10 @@ export interface CoinData {
     name: string;
     fullName: string;
     price: number;
+}
+
+export interface CoinApi {
+    Data: Object[]
 }
 
 export interface MarketData {
