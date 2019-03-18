@@ -2,7 +2,7 @@ import {Action} from 'redux';
 import {connect} from 'react-redux';
 import {ThunkDispatch} from 'redux-thunk';
 import {AppState} from '../../types/types';
-import {Coins} from './Coins';
+import Coins from './Coins';
 
 // We will use connect function that will take original App component and turn it into a container using
 // mapStateToProps - changes the data from current store to to shape our component needs - mapper
