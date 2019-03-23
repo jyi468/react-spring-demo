@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import {Parallax, ParallaxLayer} from "react-spring/addons";
 import {AppProps, AppState} from "./types/types";
-import Coins from "./components/coins/Coins";
 import HeaderBarContainer from "./components/headerBar/HeaderBarContainer";
+import CoinsContainer from "./components/coins/CoinsContainer";
 
 const url = (name: string, wrap = false) => `${wrap ? 'url(' : ''}w3images/${name}.jpg${wrap ? ')' : ''}`;
 
@@ -39,7 +39,7 @@ class App extends Component<AppProps, AppState> {
                     </ParallaxLayer>
                 </Parallax>
                 <HeaderBarContainer/>
-                <Coins/>
+                <CoinsContainer/>
             </div>
         );
     }

@@ -2,14 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import {Theme, WithStyles, withStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
@@ -85,23 +81,13 @@ const styles = (theme: Theme) => createStyles({
 
 interface CoinProps extends WithStyles<typeof styles> {
     theme: any;
+    handleDrawerClose: () => {};
+    isOpen: boolean;
 }
 
 class Coins extends React.Component<CoinProps> {
-    state = {
-        open: false,
-    };
-
-    handleDrawerOpen = () => {
-        this.setState({ open: true });
-    };
-
-    handleDrawerClose = () => {
-        this.setState({ open: false });
-    };
-
     render() {
-        const { classes, theme } = this.props;
+        const { classes, theme, handleDrawerClose, isOpen } = this.props;
 
         return (
             <div className={classes.root}>
@@ -109,16 +95,16 @@ class Coins extends React.Component<CoinProps> {
                 {/*<AppBar
                     position="fixed"
                     className={classNames(classes.appBar, {
-                        [classes.appBarShift]: this.state.open,
+                        [classes.appBarShift]: isOpen,
                     })}
                 >
-                    <Toolbar disableGutters={!this.state.open}>
+                    <Toolbar disableGutters={!isOpen}>
                         <IconButton
                             color="inherit"
                             aria-label="Open drawer"
                             onClick={this.handleDrawerOpen}
                             className={classNames(classes.menuButton, {
-                                [classes.hide]: this.state.open,
+                                [classes.hide]: isOpen,
                             })}
                         >
                             <MenuIcon />
@@ -131,19 +117,19 @@ class Coins extends React.Component<CoinProps> {
                 <Drawer
                     variant="permanent"
                     className={classNames(classes.drawer, {
-                        [classes.drawerOpen]: this.state.open,
-                        [classes.drawerClose]: !this.state.open,
+                        [classes.drawerOpen]: isOpen,
+                        [classes.drawerClose]: !isOpen,
                     })}
                     classes={{
                         paper: classNames({
-                            [classes.drawerOpen]: this.state.open,
-                            [classes.drawerClose]: !this.state.open,
+                            [classes.drawerOpen]: isOpen,
+                            [classes.drawerClose]: !isOpen,
                         }),
                     }}
-                    open={this.state.open}
+                    open={isOpen}
                 >
                     <div className={classes.toolbar}>
-                        <IconButton onClick={this.handleDrawerClose}>
+                        <IconButton onClick={handleDrawerClose}>
                             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                         </IconButton>
                     </div>

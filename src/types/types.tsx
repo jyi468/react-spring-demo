@@ -9,8 +9,13 @@ export interface AppProps {
 export interface Dashboard {
     currentCoinId: string;
     currency: string;
-    coins: CoinData[];
+    sidebar: SideBar;
     minuteData: MarketData[];
+}
+
+export interface SideBar {
+    coins: CoinData[];
+    isOpen: boolean;
 }
 
 export interface CoinData {

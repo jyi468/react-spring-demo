@@ -3,6 +3,7 @@ import {AppState, CoinData} from "../types/types";
 import * as constants from "../constants/constants";
 
 export function app(state: AppState, action: AppAction) {
+    const newState = {...state};
     switch (action.type) {
         case constants.RECEIVE_COIN_LIST:
             let data: any = action.json.Data;
@@ -13,15 +14,20 @@ export function app(state: AppState, action: AppAction) {
                 price: coin.RAW.USD.PRICE
             }));
 
-            return {...state, coins: coins};
+            newState.dashboard.sidebar.coins = coins;
+
+            return newState;
         case constants.RECEIVE_MINUTE_DATA:
-            return state;
+            return newState;
         case constants.HANDLE_DRAWER_OPEN:
-            return state;
+            newState.dashboard.sidebar.isOpen = true;
+            return newState;
         case constants.HANDLE_DRAWER_CLOSE:
+            newState.dashboard.sidebar.isOpen = false;
+            return newState;
+        default:
             return state;
     }
-    return state;
 }
 
 // TODO: Use combine reducers when issue is fixed: https://github.com/reduxjs/redux/issues/3379

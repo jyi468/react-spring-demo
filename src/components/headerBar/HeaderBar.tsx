@@ -84,17 +84,15 @@ const styles = (theme: Theme) => createStyles({
 });
 
 interface HeaderBarProps extends WithStyles<typeof styles> {
+    isOpen: boolean;
     theme: any;
     handleDrawerOpen: () => {}
 }
 
 class HeaderBar extends React.Component<HeaderBarProps> {
-    state = {
-        open: false,
-    };
 
     render() {
-        const { classes, theme, handleDrawerOpen } = this.props;
+        const { classes, handleDrawerOpen, isOpen } = this.props;
 
         return (
             <div className={classes.root}>
@@ -102,16 +100,16 @@ class HeaderBar extends React.Component<HeaderBarProps> {
                 <AppBar
                     position="fixed"
                     className={classNames(classes.HeaderBar, {
-                        [classes.HeaderBarShift]: this.state.open,
+                        [classes.HeaderBarShift]: isOpen,
                     })}
                 >
-                    <Toolbar disableGutters={!this.state.open}>
+                    <Toolbar disableGutters={!isOpen}>
                         <IconButton
                             color="inherit"
                             aria-label="Open drawer"
                             onClick={handleDrawerOpen}
                             className={classNames(classes.menuButton, {
-                                [classes.hide]: this.state.open,
+                                [classes.hide]: isOpen,
                             })}
                         >
                             <MenuIcon />

@@ -9,8 +9,8 @@ import {handleDrawerOpen} from "./HeaderBarActions";
 // mapStateToProps - changes the data from current store to to shape our component needs - mapper
 // mapDispatchToProps - creates callback props to pump actions to our store using a given dispatch function
 
-export const mapStateToProps = ({}: AppState) => ({
-
+export const mapStateToProps = (state: AppState) => ({
+    isOpen: state.dashboard.sidebar.isOpen
 });
 
 // Takes in a dispatcher function. Dispatcher functions can pass actions to our store for updates
