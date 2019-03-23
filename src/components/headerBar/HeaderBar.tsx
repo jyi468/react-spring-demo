@@ -25,14 +25,14 @@ const styles = (theme: Theme) => createStyles({
     root: {
         display: 'flex',
     },
-    appBar: {
+    HeaderBar: {
         zIndex: theme.zIndex.drawer + 1,
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
     },
-    appBarShift: {
+    HeaderBarShift: {
         marginLeft: drawerWidth,
         width: `calc(100% - ${drawerWidth}px)`,
         transition: theme.transitions.create(['width', 'margin'], {
@@ -83,40 +83,33 @@ const styles = (theme: Theme) => createStyles({
     },
 });
 
-interface CoinProps extends WithStyles<typeof styles> {
+interface HeaderBarProps extends WithStyles<typeof styles> {
     theme: any;
+    handleDrawerOpen: () => {}
 }
 
-class Coins extends React.Component<CoinProps> {
+class HeaderBar extends React.Component<HeaderBarProps> {
     state = {
         open: false,
     };
 
-    handleDrawerOpen = () => {
-        this.setState({ open: true });
-    };
-
-    handleDrawerClose = () => {
-        this.setState({ open: false });
-    };
-
     render() {
-        const { classes, theme } = this.props;
+        const { classes, theme, handleDrawerOpen } = this.props;
 
         return (
             <div className={classes.root}>
                 <CssBaseline />
-                {/*<AppBar
+                <AppBar
                     position="fixed"
-                    className={classNames(classes.appBar, {
-                        [classes.appBarShift]: this.state.open,
+                    className={classNames(classes.HeaderBar, {
+                        [classes.HeaderBarShift]: this.state.open,
                     })}
                 >
                     <Toolbar disableGutters={!this.state.open}>
                         <IconButton
                             color="inherit"
                             aria-label="Open drawer"
-                            onClick={this.handleDrawerOpen}
+                            onClick={handleDrawerOpen}
                             className={classNames(classes.menuButton, {
                                 [classes.hide]: this.state.open,
                             })}
@@ -127,52 +120,10 @@ class Coins extends React.Component<CoinProps> {
                             Mini variant drawer
                         </Typography>
                     </Toolbar>
-                </AppBar>*/}
-                <Drawer
-                    variant="permanent"
-                    className={classNames(classes.drawer, {
-                        [classes.drawerOpen]: this.state.open,
-                        [classes.drawerClose]: !this.state.open,
-                    })}
-                    classes={{
-                        paper: classNames({
-                            [classes.drawerOpen]: this.state.open,
-                            [classes.drawerClose]: !this.state.open,
-                        }),
-                    }}
-                    open={this.state.open}
-                >
-                    <div className={classes.toolbar}>
-                        <IconButton onClick={this.handleDrawerClose}>
-                            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                        </IconButton>
-                    </div>
-                    <Divider />
-                    <List>
-                        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List>
-                    <Divider />
-                    <List>
-                        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List>
-                </Drawer>
+                </AppBar>
             </div>
         );
     }
 }
 
-export default withStyles(styles, { withTheme: true })(Coins);
+export default withStyles(styles, { withTheme: true })(HeaderBar);

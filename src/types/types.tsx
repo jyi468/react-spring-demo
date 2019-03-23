@@ -1,12 +1,16 @@
 export interface AppState {
-    currentCoinId: string;
-    currency: string;
-    coins: CoinData[];
-    minuteData: MarketData[];
+    dashboard: Dashboard;
 }
 
 export interface AppProps {
 
+}
+
+export interface Dashboard {
+    currentCoinId: string;
+    currency: string;
+    coins: CoinData[];
+    minuteData: MarketData[];
 }
 
 export interface CoinData {

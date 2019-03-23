@@ -1,11 +1,15 @@
 import * as constants from '../constants/constants';
 import {Dispatch} from "redux";
 import {CoinApi} from "../types/types";
+import {HandleDrawerOpen} from "../components/headerBar/HeaderBarActions";
+import {HandleDrawerClose} from "../components/coins/CoinsActions";
 
 const apiString = '&api_key=f0c3a82f98f5d0c98d84f5ac3e8660bb36e503c8dfca28a74d458871c2db1d24';
 
-export type AppAction = ApiAction;
-export type ApiAction = ReceiveCoinList | ReceiveMinuteData;
+export type AppAction = DashboardAction;
+export type DashboardAction = DashboardApiAction | DashboardUiAction;
+export type DashboardApiAction = ReceiveCoinList | ReceiveMinuteData;
+export type DashboardUiAction = HandleDrawerOpen | HandleDrawerClose;
 
 export interface ReceiveCoinList {
     type: constants.RECEIVE_COIN_LIST;

@@ -4,6 +4,7 @@ import './App.css';
 import {Parallax, ParallaxLayer} from "react-spring/addons";
 import {AppProps, AppState} from "./types/types";
 import Coins from "./components/coins/Coins";
+import HeaderBarContainer from "./components/headerBar/HeaderBarContainer";
 
 const url = (name: string, wrap = false) => `${wrap ? 'url(' : ''}w3images/${name}.jpg${wrap ? ')' : ''}`;
 
@@ -37,6 +38,7 @@ class App extends Component<AppProps, AppState> {
                         <img src={url('parallax1')} style={{ width: '15%', marginLeft: '70%' }} />
                     </ParallaxLayer>
                 </Parallax>
+                <HeaderBarContainer/>
                 <Coins/>
             </div>
         );
