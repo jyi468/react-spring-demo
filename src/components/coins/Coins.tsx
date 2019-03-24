@@ -58,9 +58,9 @@ const styles = (theme: Theme) => createStyles({
             duration: theme.transitions.duration.leavingScreen,
         }),
         overflowX: 'hidden',
-        width: theme.spacing.unit * 7 + 1,
+        width: theme.spacing.unit * 10 + 1,
         [theme.breakpoints.up('sm')]: {
-            width: theme.spacing.unit * 9 + 1,
+            width: theme.spacing.unit * 10 + 1,
         },
     },
     toolbar: {
@@ -78,6 +78,7 @@ const styles = (theme: Theme) => createStyles({
 
 interface CoinProps extends WithStyles<typeof styles> {
     theme: any;
+    fetchMinuteData: (name: string) => {};
     handleDrawerOpen: () => {};
     handleDrawerClose: () => {};
     coins: CoinData[]
@@ -86,7 +87,7 @@ interface CoinProps extends WithStyles<typeof styles> {
 
 class Coins extends React.Component<CoinProps> {
     render() {
-        const { classes, handleDrawerOpen, handleDrawerClose, coins, isOpen } = this.props;
+        const { classes, fetchMinuteData, handleDrawerOpen, handleDrawerClose, coins, isOpen } = this.props;
 
         return (
             <div className={classes.root}>
@@ -112,7 +113,7 @@ class Coins extends React.Component<CoinProps> {
                     <Divider />
                     <List>
                         {coins.map((coin: CoinData) => (
-                            <ListItem button key={coin.id}>
+                            <ListItem button key={coin.id} onClick={() => fetchMinuteData(coin.name)}>
                                 <ListItemIcon>
                                     <Avatar>{coin.symbol}</Avatar>
                                 </ListItemIcon>

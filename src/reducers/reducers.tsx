@@ -1,11 +1,11 @@
 import {AppAction} from "../actions/actions";
-import {AppState, CoinData} from "../types/types";
+import {AppState, CoinData, MarketData} from "../types/types";
 import * as constants from "../constants/constants";
 
 export function app(state: AppState, action: AppAction) {
     const newState = {...state};
     switch (action.type) {
-        case constants.RECEIVE_COIN_LIST:
+        case constants.RECEIVE_COIN_LIST: {
             let data: any = action.json.Data;
             let coins: CoinData[] = data.map((coin: any) => ({
                 id: coin.CoinInfo.Id,
@@ -18,8 +18,12 @@ export function app(state: AppState, action: AppAction) {
             newState.dashboard.sidebar.coins = coins;
 
             return newState;
-        case constants.RECEIVE_MINUTE_DATA:
+        }
+        case constants.RECEIVE_MINUTE_DATA: {
+            newState.dashboard.minuteData = action.json.Data;
+            newState.dashboard.currentCoinName = action.id;
             return newState;
+        }
         case constants.HANDLE_DRAWER_OPEN:
             newState.dashboard.sidebar.isOpen = true;
             return newState;

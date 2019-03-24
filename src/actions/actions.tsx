@@ -1,6 +1,6 @@
 import * as constants from '../constants/constants';
 import {Dispatch} from "redux";
-import {CoinApi} from "../types/types";
+import {CoinApi, MinuteApiData} from "../types/types";
 import {HandleDrawerOpen} from "../components/headerBar/HeaderBarActions";
 import {HandleDrawerClose} from "../components/coins/CoinsActions";
 
@@ -18,7 +18,8 @@ export interface ReceiveCoinList {
 
 export interface ReceiveMinuteData {
     type: constants.RECEIVE_MINUTE_DATA;
-    json: object;
+    id: string;
+    json: MinuteApiData;
 }
 
 /**
@@ -28,10 +29,10 @@ export interface ReceiveMinuteData {
  */
 export function fetchMinuteData(coin: string) {
     return (dispatch: Dispatch) => {
-        return fetch(`https://min-api.cryptocompare.com/data/histominute?fsym='${coin}&tsym=GBP&limit=100${apiString}`)
+        return fetch(`https://min-api.cryptocompare.com/data/histominute?fsym=${coin}&tsym=USD&limit=10${apiString}`)
             .then(response => response.json())
             .then((json) => {
-                dispatch(receiveMinuteData(json))
+                dispatch(receiveMinuteData(json, coin))
             });
     }
 }
@@ -43,9 +44,10 @@ export function receiveCoinList(json: CoinApi): ReceiveCoinList {
     }
 }
 
-export function receiveMinuteData(json: Object): ReceiveMinuteData {
+export function receiveMinuteData(json: MinuteApiData, id: string): ReceiveMinuteData {
     return {
         type: constants.RECEIVE_MINUTE_DATA,
+        id,
         json
     };
 }

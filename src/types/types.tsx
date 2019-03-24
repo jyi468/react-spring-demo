@@ -1,5 +1,5 @@
 export interface AppProps {
-
+    classes: any;
 }
 
 export interface AppState {
@@ -7,7 +7,7 @@ export interface AppState {
 }
 
 export interface Dashboard {
-    currentCoinId: string;
+    currentCoinName: string;
     currency: string;
     sidebar: SideBar;
     minuteData: MarketData[];
@@ -28,6 +28,10 @@ export interface CoinData {
 
 export interface CoinApi {
     Data: Object[]
+}
+
+export interface MinuteApiData {
+    Data: MarketData[];
 }
 
 export interface MarketData {

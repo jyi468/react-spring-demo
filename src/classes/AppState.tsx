@@ -4,7 +4,7 @@ export class AppStateImpl implements AppState {
     dashboard: Dashboard;
 
     constructor(dashboard = {
-        currentCoinId: "1182",
+        currentCoinName: "BTC",
         currency: "USD",
         minuteData: [],
         sidebar: {coins: [], isOpen: false}
