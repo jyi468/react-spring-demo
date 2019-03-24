@@ -11,8 +11,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import createStyles from "@material-ui/core/styles/createStyles";
 import {CoinData} from "../../types/types";
 import Avatar from "@material-ui/core/Avatar/Avatar";
@@ -95,28 +93,6 @@ class Coins extends React.Component<CoinProps> {
         return (
             <div className={classes.root}>
                 <CssBaseline />
-                {/*<AppBar
-                    position="fixed"
-                    className={classNames(classes.appBar, {
-                        [classes.appBarShift]: isOpen,
-                    })}
-                >
-                    <Toolbar disableGutters={!isOpen}>
-                        <IconButton
-                            color="inherit"
-                            aria-label="Open drawer"
-                            onClick={this.handleDrawerOpen}
-                            className={classNames(classes.menuButton, {
-                                [classes.hide]: isOpen,
-                            })}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="h6" color="inherit" noWrap>
-                            Mini variant drawer
-                        </Typography>
-                    </Toolbar>
-                </AppBar>*/}
                 <Drawer
                     variant="permanent"
                     className={classNames(classes.drawer, {
@@ -138,7 +114,7 @@ class Coins extends React.Component<CoinProps> {
                     </div>
                     <Divider />
                     <List>
-                        {coins.map((coin: CoinData, index) => (
+                        {coins.map((coin: CoinData) => (
                             <ListItem button key={coin.id}>
                                 <ListItemIcon>
                                     <Avatar>{coin.symbol}</Avatar>
@@ -147,17 +123,6 @@ class Coins extends React.Component<CoinProps> {
                             </ListItem>
                         ))}
                     </List>
-                    {/*<Divider />
-                    <List>
-                        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List>*/}
                 </Drawer>
             </div>
         );
