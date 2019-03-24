@@ -4,6 +4,7 @@ import {ThunkDispatch} from 'redux-thunk';
 import {AppState} from '../../types/types';
 import Coins from './Coins';
 import {handleDrawerClose} from "./CoinsActions";
+import {handleDrawerOpen} from "../headerBar/HeaderBarActions";
 
 // We will use connect function that will take original App component and turn it into a container using
 // mapStateToProps - changes the data from current store to to shape our component needs - mapper
@@ -18,7 +19,8 @@ export const mapStateToProps = (state: AppState) => ({
 // Create callbacks that will call the dispatcher as necessary
 export function mapDispatchToProps(dispatch: ThunkDispatch<AppState, void, Action>) {
     return {
-        handleDrawerClose: () => dispatch(handleDrawerClose())
+        handleDrawerClose: () => dispatch(handleDrawerClose()),
+        handleDrawerOpen: () => dispatch(handleDrawerOpen())
     };
 }
 

@@ -5,9 +5,6 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -81,6 +78,7 @@ const styles = (theme: Theme) => createStyles({
 
 interface CoinProps extends WithStyles<typeof styles> {
     theme: any;
+    handleDrawerOpen: () => {};
     handleDrawerClose: () => {};
     coins: CoinData[]
     isOpen: boolean;
@@ -88,12 +86,14 @@ interface CoinProps extends WithStyles<typeof styles> {
 
 class Coins extends React.Component<CoinProps> {
     render() {
-        const { classes, theme, handleDrawerClose, coins, isOpen } = this.props;
+        const { classes, handleDrawerOpen, handleDrawerClose, coins, isOpen } = this.props;
 
         return (
             <div className={classes.root}>
                 <CssBaseline />
                 <Drawer
+                    onMouseEnter={handleDrawerOpen}
+                    onMouseLeave={handleDrawerClose}
                     variant="permanent"
                     className={classNames(classes.drawer, {
                         [classes.drawerOpen]: isOpen,
@@ -108,9 +108,6 @@ class Coins extends React.Component<CoinProps> {
                     open={isOpen}
                 >
                     <div className={classes.toolbar}>
-                        <IconButton onClick={handleDrawerClose}>
-                            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                        </IconButton>
                     </div>
                     <Divider />
                     <List>
