@@ -10,7 +10,8 @@ import {handleDrawerClose} from "./CoinsActions";
 // mapDispatchToProps - creates callback props to pump actions to our store using a given dispatch function
 
 export const mapStateToProps = (state: AppState) => ({
-    isOpen: state.dashboard.sidebar.isOpen
+    isOpen: state.dashboard.sidebar.isOpen,
+    coins: state.dashboard.sidebar.coins
 });
 
 // Takes in a dispatcher function. Dispatcher functions can pass actions to our store for updates

@@ -11,7 +11,8 @@ export function app(state: AppState, action: AppAction) {
                 id: coin.CoinInfo.Id,
                 name: coin.CoinInfo.Name,
                 fullName: coin.CoinInfo.FullName,
-                price: coin.RAW.USD.PRICE
+                price: coin.RAW.USD.PRICE,
+                symbol: coin.DISPLAY.USD.FROMSYMBOL
             }));
 
             newState.dashboard.sidebar.coins = coins;

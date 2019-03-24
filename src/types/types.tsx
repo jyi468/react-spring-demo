@@ -1,9 +1,9 @@
-export interface AppState {
-    dashboard: Dashboard;
-}
-
 export interface AppProps {
 
+}
+
+export interface AppState {
+    dashboard: Dashboard;
 }
 
 export interface Dashboard {
@@ -23,6 +23,7 @@ export interface CoinData {
     name: string;
     fullName: string;
     price: number;
+    symbol: string;
 }
 
 export interface CoinApi {

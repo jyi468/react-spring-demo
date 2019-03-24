@@ -14,6 +14,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import createStyles from "@material-ui/core/styles/createStyles";
+import {CoinData} from "../../types/types";
+import Avatar from "@material-ui/core/Avatar/Avatar";
 
 const drawerWidth = 240;
 
@@ -82,12 +84,13 @@ const styles = (theme: Theme) => createStyles({
 interface CoinProps extends WithStyles<typeof styles> {
     theme: any;
     handleDrawerClose: () => {};
+    coins: CoinData[]
     isOpen: boolean;
 }
 
 class Coins extends React.Component<CoinProps> {
     render() {
-        const { classes, theme, handleDrawerClose, isOpen } = this.props;
+        const { classes, theme, handleDrawerClose, coins, isOpen } = this.props;
 
         return (
             <div className={classes.root}>
@@ -135,16 +138,16 @@ class Coins extends React.Component<CoinProps> {
                     </div>
                     <Divider />
                     <List>
-                        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                            <ListItem button key={text}>
+                        {coins.map((coin: CoinData, index) => (
+                            <ListItem button key={coin.id}>
                                 <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}
+                                    <Avatar>{coin.symbol}</Avatar>
                                 </ListItemIcon>
-                                <ListItemText primary={text} />
+                                <ListItemText primary={coin.fullName} />
                             </ListItem>
                         ))}
                     </List>
-                    <Divider />
+                    {/*<Divider />
                     <List>
                         {['All mail', 'Trash', 'Spam'].map((text, index) => (
                             <ListItem button key={text}>
@@ -154,7 +157,7 @@ class Coins extends React.Component<CoinProps> {
                                 <ListItemText primary={text} />
                             </ListItem>
                         ))}
-                    </List>
+                    </List>*/}
                 </Drawer>
             </div>
         );
