@@ -6,7 +6,7 @@ import {AppProps, AppState} from "./types/types";
 import HeaderBarContainer from "./components/headerBar/HeaderBarContainer";
 import CoinsContainer from "./components/coins/CoinsContainer";
 import Grid from "@material-ui/core/Grid/Grid";
-import {createStyles, Theme} from "@material-ui/core";
+import {CardActionArea, Card, createStyles, Theme, CardContent, CardHeader} from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MinuteDataContainer from "./components/minuteData/MinuteDataContainer";
 
@@ -20,7 +20,7 @@ const styles = (theme: Theme) => createStyles({
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
         color: theme.palette.text.secondary,
-    },
+    }
 });
 
 class App extends Component<AppProps, AppState> {
@@ -56,13 +56,6 @@ class App extends Component<AppProps, AppState> {
                 </Parallax>*/}
                 <HeaderBarContainer/>
                 <CoinsContainer/>
-                <div className={classes.root}>
-                    <Grid container spacing={24}>
-                        <Grid item xs={12}>
-                            <MinuteDataContainer/>
-                        </Grid>
-                    </Grid>
-                </div>
             </div>
         );
     }

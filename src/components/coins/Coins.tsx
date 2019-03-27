@@ -11,6 +11,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import createStyles from "@material-ui/core/styles/createStyles";
 import {CoinData} from "../../types/types";
 import Avatar from "@material-ui/core/Avatar/Avatar";
+import {Card, CardActionArea, CardContent, CardHeader, Grid, IconButton} from "@material-ui/core";
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import MinuteDataContainer from "../minuteData/MinuteDataContainer";
 
 const drawerWidth = 240;
 
@@ -87,7 +91,7 @@ interface CoinProps extends WithStyles<typeof styles> {
 
 class Coins extends React.Component<CoinProps> {
     render() {
-        const { classes, fetchMinuteData, handleDrawerOpen, handleDrawerClose, coins, isOpen } = this.props;
+        const { classes, theme, fetchMinuteData, handleDrawerOpen, handleDrawerClose, coins, isOpen } = this.props;
 
         return (
             <div className={classes.root}>
@@ -95,7 +99,7 @@ class Coins extends React.Component<CoinProps> {
                 <Drawer
                     onMouseEnter={handleDrawerOpen}
                     onMouseLeave={handleDrawerClose}
-                    variant="permanent"
+                    variant="temporary"
                     className={classNames(classes.drawer, {
                         [classes.drawerOpen]: isOpen,
                         [classes.drawerClose]: !isOpen,
@@ -109,6 +113,9 @@ class Coins extends React.Component<CoinProps> {
                     open={isOpen}
                 >
                     <div className={classes.toolbar}>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                        </IconButton>
                     </div>
                     <Divider />
                     <List>
@@ -122,6 +129,20 @@ class Coins extends React.Component<CoinProps> {
                         ))}
                     </List>
                 </Drawer>
+                <div className={classes.content}>
+                    <Grid container spacing={24}>
+                        <Grid item xs={12} md={12} lg={12}>
+                            <Card>
+                                <CardHeader>Grid</CardHeader>
+                                <CardActionArea>
+                                    <CardContent>
+                                        <MinuteDataContainer/>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        </Grid>
+                    </Grid>
+                </div>
             </div>
         );
     }
