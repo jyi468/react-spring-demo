@@ -64,7 +64,7 @@ class MinuteData extends React.Component<MinuteDataProps> {
 
     render() {
         const { data, name, classes } = this.props;
-        return (<div id="chartdiv"></div>);
+        return (<div id="chartdiv" className={classes.chart}></div>);
     }
 }
 
