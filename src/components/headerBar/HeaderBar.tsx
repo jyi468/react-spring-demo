@@ -106,7 +106,7 @@ class HeaderBar extends React.Component<HeaderBarProps> {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" color="inherit" noWrap>
-                            Mini variant drawer
+                            Dashboard
                         </Typography>
                     </Toolbar>
                 </AppBar>

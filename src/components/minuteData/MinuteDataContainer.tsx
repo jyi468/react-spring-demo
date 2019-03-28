@@ -9,7 +9,10 @@ import MinuteData from './MinuteData';
 // mapDispatchToProps - creates callback props to pump actions to our store using a given dispatch function
 
 export const mapStateToProps = (state: AppState) => ({
-    data: state.dashboard.minuteData,
+    data: state.dashboard.minuteData.map((minute: MarketData) => ({
+        time: new Date(minute.time),
+        close: minute.close
+    })),
     name: state.dashboard.currentCoinName
 });
 
