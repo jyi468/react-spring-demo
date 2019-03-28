@@ -97,9 +97,9 @@ class Coins extends React.Component<CoinProps> {
             <div className={classes.root}>
                 <CssBaseline />
                 <Drawer
-                    onMouseEnter={handleDrawerOpen}
-                    onMouseLeave={handleDrawerClose}
-                    variant="temporary"
+/*                    onMouseEnter={handleDrawerOpen}
+                    onMouseLeave={handleDrawerClose}*/
+                    variant="permanent"
                     className={classNames(classes.drawer, {
                         [classes.drawerOpen]: isOpen,
                         [classes.drawerClose]: !isOpen,
