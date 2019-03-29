@@ -9,7 +9,7 @@ import { createStore, applyMiddleware, Action } from 'redux';
 import * as serviceWorker from './serviceWorker';
 import {default as thunk, ThunkMiddleware} from 'redux-thunk';
 import {createLogger} from 'redux-logger';
-import {fetchCoinList} from "./actions/actions";
+import {fetchCoinList, fetchMinuteData} from "./actions/actions";
 import {AppStateImpl} from './classes/AppState';
 
 const loggerMiddleware = createLogger();
@@ -34,3 +34,4 @@ ReactDOM.render(
 serviceWorker.unregister();
 
 store.dispatch(fetchCoinList());
+store.dispatch(fetchMinuteData("BTC"));

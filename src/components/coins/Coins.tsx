@@ -11,7 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import createStyles from "@material-ui/core/styles/createStyles";
 import {CoinData} from "../../types/types";
 import Avatar from "@material-ui/core/Avatar/Avatar";
-import {Card, CardActionArea, CardContent, CardHeader, Grid, IconButton} from "@material-ui/core";
+import {Card, CardActionArea, CardContent, CardHeader, Grid, IconButton, Typography} from "@material-ui/core";
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MinuteDataContainer from "../minuteData/MinuteDataContainer";
@@ -77,6 +77,7 @@ const styles = (theme: Theme) => createStyles({
     content: {
         flexGrow: 1,
         padding: theme.spacing.unit * 3,
+        marginTop: '75px'
     },
 });
 
@@ -131,6 +132,16 @@ class Coins extends React.Component<CoinProps> {
                 </Drawer>
                 <div className={classes.content}>
                     <Grid container spacing={24}>
+                        <Grid item xs={4}>
+                            <Card>
+                                <CardHeader>Coin</CardHeader>
+                                <CardActionArea>
+                                    <CardContent>
+                                        <Typography>$4,000</Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        </Grid>
                         <Grid item xs={12} md={12} lg={12}>
                             <Card>
                                 <CardHeader>Grid</CardHeader>

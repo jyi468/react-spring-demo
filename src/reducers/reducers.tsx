@@ -20,7 +20,10 @@ export function app(state: AppState, action: AppAction) {
             return newState;
         }
         case constants.RECEIVE_MINUTE_DATA: {
-            newState.dashboard.minuteData = action.json.Data;
+            newState.dashboard.minuteData = action.json.Data.map((minute: MarketData) => ({
+                ...minute,
+                time: minute.time * 1000
+            }));
             newState.dashboard.currentCoinName = action.id;
             return newState;
         }

@@ -41,6 +41,8 @@ class MinuteData extends React.Component<MinuteDataProps> {
 
         let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
         dateAxis.renderer.grid.template.location = 0;
+        dateAxis.dateFormats.setKey("minute", "hh:mm a");
+        dateAxis.periodChangeDateFormats.setKey("minute", "hh:mm a");
 
         let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         //valueAxis.tooltip.disabled = true;

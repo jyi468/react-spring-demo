@@ -29,7 +29,7 @@ export interface ReceiveMinuteData {
  */
 export function fetchMinuteData(coin: string) {
     return (dispatch: Dispatch) => {
-        return fetch(`https://min-api.cryptocompare.com/data/histominute?fsym=${coin}&tsym=USD&limit=10${apiString}`)
+        return fetch(`https://min-api.cryptocompare.com/data/histominute?fsym=${coin}&tsym=USD&limit=1440${apiString}`)
             .then(response => response.json())
             .then((json) => {
                 dispatch(receiveMinuteData(json, coin))
